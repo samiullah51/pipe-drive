@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import Header from "./Components/Header/Header";
+import "./App.css";
 
-function App() {
+// Import your page components
+import Home from "./Pages/Home";
+import Location from "./Pages/Location";
+import Verification from "./Pages/Verification";
+import Monitization from "./Pages/Monitization";
+import Compaign from "./Pages/Compaign";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Sidebar />
+        <div className="main-content">
+          <Header />
+          <div className="content-area">
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/location" element={<Location />} />
+              <Route path="/monetization" element={<Monitization />} />
+              <Route path="/verification" element={<Verification />} />
+              <Route path="/campaign" element={<Compaign />} />
+              {/* Add more routes for other pages here */}
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
